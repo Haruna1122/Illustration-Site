@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Organic liquid UI portfolio mockup using fluid SVG masks and editable CSS tokens." />
-    <title>Noise is Beauty | Liquid Site Mockup v10</title>
-    <link rel="preload" href="assets/cat-chair.webp" as="image" />
-    <link rel="preload" href="assets/mermaid.webp" as="image" />
-    <link rel="preload" href="assets/chroma.webp" as="image" />
+    <meta name="description" content="Organic liquid UI portfolio mockup using fluid SVG masks, editable CSS tokens, and subtle WebGL refraction." />
+    <title>Noise is Beauty | Liquid Site Mockup v11</title>
+    <link rel="preload" href="assets/cat-chair.webp" data-asset-key="catChair" as="image" />
+    <link rel="preload" href="assets/mermaid.webp" data-asset-key="mermaid" as="image" />
+    <link rel="preload" href="assets/chroma.webp" data-asset-key="chroma" as="image" />
     <link rel="stylesheet" href="styles/tokens.css" />
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/components.css" />
     <link rel="stylesheet" href="styles/layout.css" />
     <link rel="stylesheet" href="styles/v10-topflow.css" />
+    <link rel="stylesheet" href="styles/refraction.css" />
   </head>
   <body data-fluid-theme="membrane">
     <svg class="svg-defs" aria-hidden="true" focusable="false">
@@ -77,7 +78,7 @@
         </div>
 
         <div class="hero__visual parallax" data-depth="0.014" data-reveal>
-          <div class="liquid-stage" data-fluid-stage aria-label="Three illustrations held inside a fluid membrane">
+          <div class="liquid-stage" data-fluid-stage data-refraction-key="chroma" data-refraction-intensity="0.85" aria-label="Three illustrations held inside a fluid membrane">
             <svg class="liquid-stage__svg" viewBox="0 0 920 620" role="img" aria-labelledby="liquid-title liquid-desc">
               <title id="liquid-title">Fluid hero gallery</title>
               <desc id="liquid-desc">Three artworks are clipped by irregular animated organic shapes inside a translucent liquid membrane.</desc>
@@ -132,9 +133,9 @@
               </path>
 
               <g class="liquid-art" filter="url(#hero-warp)">
-                <image class="liquid-img liquid-img--mermaid" href="assets/mermaid.webp" x="10" y="28" width="408" height="522" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-mermaid)" />
-                <image class="liquid-img liquid-img--cat" href="assets/cat-chair.webp" x="218" y="34" width="462" height="526" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-cat)" />
-                <image class="liquid-img liquid-img--chroma" href="assets/chroma.webp" x="548" y="26" width="358" height="532" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-chroma)" />
+                <image class="liquid-img liquid-img--mermaid" href="assets/mermaid.webp" data-asset-key="mermaid" x="10" y="28" width="408" height="522" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-mermaid)" />
+                <image class="liquid-img liquid-img--cat" href="assets/cat-chair.webp" data-asset-key="catChair" x="218" y="34" width="462" height="526" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-cat)" />
+                <image class="liquid-img liquid-img--chroma" href="assets/chroma.webp" data-asset-key="chroma" x="548" y="26" width="358" height="532" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-chroma)" />
               </g>
 
               <path class="image-rim image-rim--one" d="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z"><animate attributeName="d" dur="11s" repeatCount="indefinite" values="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z;M154 66C249 25 326 88 344 168C371 291 309 432 196 475C88 516 44 369 67 244C85 150 93 104 154 66Z;M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z" /></path>
@@ -169,7 +170,7 @@
         </div>
 
         <div class="lower-liquid-sea" data-reveal>
-          <article class="top-motion-card top-motion-card--manifest" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--manifest" data-lower-liquid-card data-refraction-key="chroma" data-refraction-intensity="0.45">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-manifest" x1="0" x2="1" y1="0" y2="1">
@@ -236,7 +237,7 @@
             </div>
           </article>
 
-          <article class="top-motion-card top-motion-card--phone" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--phone" data-lower-liquid-card data-refraction-key="catChair" data-refraction-intensity="0.82">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-phonecat" x1="0" x2="1" y1="0" y2="1">
@@ -275,7 +276,7 @@
                   <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
                 </path>
                 <g class="lower-liquid-art" filter="url(#lower-warp-phonecat)">
-                  <image class="lower-liquid-img" href="assets/cat-chair.webp" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-phonecat)" />
+                  <image class="lower-liquid-img" href="assets/cat-chair.webp" data-asset-key="catChair" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-phonecat)" />
                 </g>
                 <path class="lower-image-rim" d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" filter="url(#lower-glow-phonecat)">
                   <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
@@ -296,7 +297,7 @@
             </div>
           </article>
 
-          <article class="top-motion-card top-motion-card--feature" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--feature" data-lower-liquid-card data-refraction-key="mermaid" data-refraction-intensity="0.9">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-featured" x1="0" x2="1" y1="0" y2="1">
@@ -335,7 +336,7 @@
                   <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
                 </path>
                 <g class="lower-liquid-art" filter="url(#lower-warp-featured)">
-                  <image class="lower-liquid-img" href="assets/mermaid.webp" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-featured)" />
+                  <image class="lower-liquid-img" href="assets/mermaid.webp" data-asset-key="mermaid" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-featured)" />
                 </g>
                 <path class="lower-image-rim" d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" filter="url(#lower-glow-featured)">
                   <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
@@ -369,7 +370,7 @@
         </div>
 
         <div class="lower-liquid-gallery" data-reveal>
-          <article class="top-motion-card top-motion-card--work top-motion-card--work-a" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-a" data-lower-liquid-card data-refraction-key="mermaid" data-refraction-intensity="0.92">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-workechoes" x1="0" x2="1" y1="0" y2="1">
@@ -408,7 +409,7 @@
                   <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
                 </path>
                 <g class="lower-liquid-art" filter="url(#lower-warp-workechoes)">
-                  <image class="lower-liquid-img" href="assets/mermaid.webp" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workechoes)" />
+                  <image class="lower-liquid-img" href="assets/mermaid.webp" data-asset-key="mermaid" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workechoes)" />
                 </g>
                 <path class="lower-image-rim" d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" filter="url(#lower-glow-workechoes)">
                   <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
@@ -431,7 +432,7 @@
             </div>
           </article>
 
-          <article class="top-motion-card top-motion-card--work top-motion-card--work-b" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-b" data-lower-liquid-card data-refraction-key="catChair" data-refraction-intensity="0.92">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-workcat" x1="0" x2="1" y1="0" y2="1">
@@ -470,7 +471,7 @@
                   <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
                 </path>
                 <g class="lower-liquid-art" filter="url(#lower-warp-workcat)">
-                  <image class="lower-liquid-img" href="assets/cat-chair.webp" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workcat)" />
+                  <image class="lower-liquid-img" href="assets/cat-chair.webp" data-asset-key="catChair" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workcat)" />
                 </g>
                 <path class="lower-image-rim" d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" filter="url(#lower-glow-workcat)">
                   <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
@@ -492,7 +493,7 @@
             </div>
           </article>
 
-          <article class="top-motion-card top-motion-card--work top-motion-card--work-c" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-c" data-lower-liquid-card data-refraction-key="chroma" data-refraction-intensity="0.92">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-workchroma" x1="0" x2="1" y1="0" y2="1">
@@ -531,7 +532,7 @@
                   <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z;M72 112C176 20 327 30 426 64C562 111 704 43 735 158C772 294 679 444 567 494C445 548 324 516 203 473C91 433 33 376 45 281C58 181 5 170 72 112Z;M128 56C224 6 333 70 445 42C574 11 706 91 720 207C736 337 638 477 508 499C382 520 308 457 191 510C78 562 15 394 55 268C86 169 56 94 128 56Z;M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
                 </path>
                 <g class="lower-liquid-art" filter="url(#lower-warp-workchroma)">
-                  <image class="lower-liquid-img" href="assets/chroma.webp" x="-30" y="-10" width="492" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workchroma)" />
+                  <image class="lower-liquid-img" href="assets/chroma.webp" data-asset-key="chroma" x="-30" y="-10" width="492" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workchroma)" />
                 </g>
                 <path class="lower-image-rim" d="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" filter="url(#lower-glow-workchroma)">
                   <animate attributeName="d" dur="14s" values="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z;M165 52C254 20 361 82 379 188C402 309 327 460 228 455C127 448 82 366 117 256C146 163 100 91 165 52Z;M133 94C240 27 357 49 393 166C432 290 338 443 251 498C145 563 88 389 111 273C128 180 68 134 133 94Z;M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
@@ -564,7 +565,7 @@
         </div>
 
         <div class="lower-liquid-lab" data-reveal>
-          <article class="top-motion-card top-motion-card--lab" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--lab" data-lower-liquid-card data-refraction-key="chroma" data-refraction-intensity="0.5">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-labflow" x1="0" x2="1" y1="0" y2="1">
@@ -634,7 +635,7 @@
             </div>
           </article>
 
-          <article class="top-motion-card top-motion-card--palette" data-lower-liquid-card>
+          <article class="top-motion-card top-motion-card--palette" data-lower-liquid-card data-refraction-key="catChair" data-refraction-intensity="0.42">
             <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-palette" x1="0" x2="1" y1="0" y2="1">
@@ -710,7 +711,7 @@
       </section>
 
       <section id="contact" class="section-block lower-liquid-world lower-liquid-world--contact" aria-labelledby="contact-title">
-        <article class="top-motion-card top-motion-card--contact" data-lower-liquid-card data-reveal>
+        <article class="top-motion-card top-motion-card--contact" data-lower-liquid-card data-refraction-key="mermaid" data-refraction-intensity="0.55" data-reveal>
           <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
                 <defs>
                   <linearGradient id="lower-fill-contactflow" x1="0" x2="1" y1="0" y2="1">
@@ -786,10 +787,13 @@
     </main>
 
     <footer class="site-footer">
-      <p>© <span data-year></span> Noisiform. Liquid UI prototype v10.</p>
+      <p>© <span data-year></span> Noisiform. Liquid UI prototype v11.</p>
       <a href="#top">Back to top</a>
     </footer>
 
+    <script src="scripts/assets-config.js"></script>
+    <script src="scripts/asset-loader.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/refraction.js"></script>
   </body>
 </html>

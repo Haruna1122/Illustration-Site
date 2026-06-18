@@ -1,0 +1,73 @@
+/* v11: lightweight WebGL refraction layer.
+   The HTML/SVG design remains the source of truth. These canvases are a subtle
+   enhancement that can fail safely when WebGL or CORS is unavailable. */
+
+.liquid-stage,
+.top-motion-card {
+  --refraction-opacity: 0.16;
+  --refraction-hover-opacity: 0.34;
+}
+
+.refraction-canvas {
+  position: absolute;
+  inset: -3%;
+  z-index: 2;
+  width: 106%;
+  height: 106%;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+  filter: saturate(1.12) contrast(1.04) blur(0.1px);
+  transition: opacity 900ms var(--ease-liquid), filter 900ms var(--ease-liquid);
+}
+
+.has-refraction .refraction-canvas {
+  opacity: var(--refraction-opacity);
+}
+
+.has-refraction:hover .refraction-canvas,
+.has-refraction.is-top-motion-hovering .refraction-canvas,
+.has-refraction.is-liquid-hovering .refraction-canvas {
+  opacity: var(--refraction-hover-opacity);
+  filter: saturate(1.24) contrast(1.08) blur(0px);
+}
+
+.liquid-stage .refraction-canvas {
+  inset: -2% -1%;
+  z-index: 3;
+  width: 102%;
+  height: 104%;
+  opacity: 0.12;
+  mix-blend-mode: lighten;
+}
+
+.liquid-stage.has-refraction:hover .refraction-canvas,
+.liquid-stage.has-refraction.is-liquid-hovering .refraction-canvas {
+  opacity: 0.28;
+}
+
+.top-motion-card--manifest,
+.top-motion-card--lab,
+.top-motion-card--palette,
+.top-motion-card--contact {
+  --refraction-opacity: 0.1;
+  --refraction-hover-opacity: 0.22;
+}
+
+.top-motion-card--feature,
+.top-motion-card--work,
+.top-motion-card--phone {
+  --refraction-opacity: 0.18;
+  --refraction-hover-opacity: 0.38;
+}
+
+.no-refraction .refraction-canvas,
+body.is-motion-paused .refraction-canvas {
+  opacity: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refraction-canvas {
+    display: none !important;
+  }
+}
