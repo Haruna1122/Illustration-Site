@@ -1,0 +1,48 @@
+:root {
+  /* Codex handoff: start edits here. */
+  --color-void: #03050b;
+  --color-ink: #080b14;
+  --color-panel: rgba(13, 16, 27, 0.68);
+  --color-panel-strong: rgba(8, 10, 18, 0.82);
+  --color-line: rgba(236, 232, 255, 0.18);
+  --color-text: #f4f0fb;
+  --color-muted: #b2aec3;
+  --color-dim: #757086;
+  --color-pink: #ff82ad;
+  --color-aqua: #67e9e3;
+  --color-violet: #a98cff;
+  --color-blue: #5c8bff;
+  --color-white: #fffaff;
+
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+
+  --container: min(1540px, calc(100vw - 40px));
+  --header-height: 74px;
+  --radius-panel: 34px;
+  --radius-liquid-a: 46% 54% 50% 50% / 42% 48% 52% 58%;
+  --radius-liquid-b: 60% 40% 54% 46% / 52% 46% 54% 48%;
+  --radius-liquid-c: 48% 52% 42% 58% / 62% 44% 56% 38%;
+  --shadow-soft: 0 36px 120px rgba(0, 0, 0, 0.42);
+  --blur-panel: 24px;
+
+  --ease-liquid: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 220ms;
+  --duration-base: 520ms;
+  --duration-slow: 1300ms;
+}
+
+body[data-fluid-theme="tide"] {
+  --color-pink: #f4a0ca;
+  --color-aqua: #83f4f0;
+  --color-violet: #7fa4ff;
+  --color-panel: rgba(8, 18, 28, 0.72);
+}
+
+body[data-fluid-theme="bloom"] {
+  --color-pink: #ff7a95;
+  --color-aqua: #73e2d5;
+  --color-violet: #d7a3ff;
+  --color-panel: rgba(22, 11, 26, 0.72);
+}

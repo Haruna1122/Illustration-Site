@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Organic liquid UI portfolio mockup using fluid SVG masks and editable CSS tokens." />
+    <title>Noise is Beauty | Liquid Site Mockup v10</title>
+    <link rel="preload" href="assets/cat-chair.webp" as="image" />
+    <link rel="preload" href="assets/mermaid.webp" as="image" />
+    <link rel="preload" href="assets/chroma.webp" as="image" />
+    <link rel="stylesheet" href="styles/tokens.css" />
+    <link rel="stylesheet" href="styles/base.css" />
+    <link rel="stylesheet" href="styles/components.css" />
+    <link rel="stylesheet" href="styles/layout.css" />
+    <link rel="stylesheet" href="styles/v10-topflow.css" />
+  </head>
+  <body data-fluid-theme="membrane">
+    <svg class="svg-defs" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="gooey">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -9" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+        <filter id="liquid-edge" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="B" />
+        </filter>
+      </defs>
+    </svg>
+
+    <div class="ambient" aria-hidden="true">
+      <div class="goo-field">
+        <span class="goo goo--one"></span>
+        <span class="goo goo--two"></span>
+        <span class="goo goo--three"></span>
+        <span class="goo goo--four"></span>
+      </div>
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+      <span class="noise-layer"></span>
+    </div>
+
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#top" aria-label="Noise is Beauty home">
+        <span class="brand__sig">Noisiform</span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#top">Home</a>
+        <a href="#works">Works</a>
+        <a href="#about">About</a>
+        <a href="#motion">Motion</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="chip" type="button" data-theme-button="membrane">Membrane</button>
+        <button class="chip" type="button" data-theme-button="tide">Tide</button>
+        <button class="chip" type="button" data-theme-button="bloom">Bloom</button>
+        <button class="chip chip--icon" type="button" data-motion-toggle aria-pressed="false">Motion</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy" data-reveal>
+          <p class="eyebrow">Organic digital gallery</p>
+          <h1 id="hero-title">Noise<br />is<br /><span>Beauty.</span></h1>
+          <p class="hero__lead">
+            ノイズは、美しい。<br />
+            画像を楕円に入れるのではなく、流体の膜が作品を包み、境界が揺らぎながら展示されるサイト。
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#works">View works</a>
+            <a class="button button--ghost" href="#motion">Motion ideas</a>
+          </div>
+        </div>
+
+        <div class="hero__visual parallax" data-depth="0.014" data-reveal>
+          <div class="liquid-stage" data-fluid-stage aria-label="Three illustrations held inside a fluid membrane">
+            <svg class="liquid-stage__svg" viewBox="0 0 920 620" role="img" aria-labelledby="liquid-title liquid-desc">
+              <title id="liquid-title">Fluid hero gallery</title>
+              <desc id="liquid-desc">Three artworks are clipped by irregular animated organic shapes inside a translucent liquid membrane.</desc>
+              <defs>
+                <linearGradient id="membrane-fill" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#ffffff" stop-opacity="0.16" />
+                  <stop offset="0.36" stop-color="#ff86b7" stop-opacity="0.08" />
+                  <stop offset="0.68" stop-color="#67efe4" stop-opacity="0.12" />
+                  <stop offset="1" stop-color="#b896ff" stop-opacity="0.18" />
+                </linearGradient>
+                <linearGradient id="membrane-stroke" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#f4efff" stop-opacity="0.92" />
+                  <stop offset="0.38" stop-color="#ff85b0" stop-opacity="0.88" />
+                  <stop offset="0.72" stop-color="#67ece6" stop-opacity="0.82" />
+                  <stop offset="1" stop-color="#b79bff" stop-opacity="0.78" />
+                </linearGradient>
+                <filter id="hero-warp" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.007 0.015" numOctaves="2" seed="12" result="warpNoise">
+                    <animate attributeName="baseFrequency" dur="12s" values="0.007 0.015;0.014 0.009;0.007 0.015" repeatCount="indefinite" />
+                  </feTurbulence>
+                  <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="8" xChannelSelector="R" yChannelSelector="G" />
+                </filter>
+                <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="12" result="blur" />
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.3  0 1 0 0 0.2  0 0 1 0 0.6  0 0 0 0.95 0" result="glow" />
+                  <feMerge>
+                    <feMergeNode in="glow" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+
+                <clipPath id="clip-mermaid" clipPathUnits="userSpaceOnUse">
+                  <path d="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z">
+                    <animate attributeName="d" dur="11s" repeatCount="indefinite" values="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z;M154 66C249 25 326 88 344 168C371 291 309 432 196 475C88 516 44 369 67 244C85 150 93 104 154 66Z;M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z" />
+                  </path>
+                </clipPath>
+                <clipPath id="clip-cat" clipPathUnits="userSpaceOnUse">
+                  <path d="M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z">
+                    <animate attributeName="d" dur="13s" repeatCount="indefinite" values="M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z;M328 68C426 38 539 55 604 135C676 225 636 401 545 487C449 578 302 521 262 429C219 331 238 108 328 68Z;M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z" />
+                  </path>
+                </clipPath>
+                <clipPath id="clip-chroma" clipPathUnits="userSpaceOnUse">
+                  <path d="M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z">
+                    <animate attributeName="d" dur="10s" repeatCount="indefinite" values="M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z;M641 72C732 29 830 92 854 198C881 322 799 464 701 475C599 488 557 389 591 272C618 178 574 114 641 72Z;M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z" />
+                  </path>
+                </clipPath>
+              </defs>
+
+              <path class="membrane-shadow" d="M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z" />
+              <path class="membrane-fill" d="M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z">
+                <animate attributeName="d" dur="15s" repeatCount="indefinite" values="M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z;M118 75C229 4 337 62 438 44C576 20 730 15 823 115C919 219 886 382 796 470C698 566 582 518 471 546C327 584 178 594 87 479C12 384 20 151 118 75Z;M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z" />
+              </path>
+
+              <g class="liquid-art" filter="url(#hero-warp)">
+                <image class="liquid-img liquid-img--mermaid" href="assets/mermaid.webp" x="10" y="28" width="408" height="522" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-mermaid)" />
+                <image class="liquid-img liquid-img--cat" href="assets/cat-chair.webp" x="218" y="34" width="462" height="526" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-cat)" />
+                <image class="liquid-img liquid-img--chroma" href="assets/chroma.webp" x="548" y="26" width="358" height="532" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-chroma)" />
+              </g>
+
+              <path class="image-rim image-rim--one" d="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z"><animate attributeName="d" dur="11s" repeatCount="indefinite" values="M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z;M154 66C249 25 326 88 344 168C371 291 309 432 196 475C88 516 44 369 67 244C85 150 93 104 154 66Z;M162 78C236 35 327 64 350 151C383 274 322 449 207 470C93 490 48 374 60 262C69 178 87 121 162 78Z" /></path>
+              <path class="image-rim image-rim--two" d="M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z"><animate attributeName="d" dur="13s" repeatCount="indefinite" values="M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z;M328 68C426 38 539 55 604 135C676 225 636 401 545 487C449 578 302 521 262 429C219 331 238 108 328 68Z;M314 88C402 36 528 42 592 111C675 201 650 392 561 478C472 563 321 532 271 447C224 367 228 139 314 88Z" /></path>
+              <path class="image-rim image-rim--three" d="M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z"><animate attributeName="d" dur="10s" repeatCount="indefinite" values="M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z;M641 72C732 29 830 92 854 198C881 322 799 464 701 475C599 488 557 389 591 272C618 178 574 114 641 72Z;M625 92C714 32 836 71 861 182C889 307 819 462 714 484C613 505 570 401 588 286C601 199 563 134 625 92Z" /></path>
+              <path class="membrane-line" d="M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z"><animate attributeName="d" dur="15s" repeatCount="indefinite" values="M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z;M118 75C229 4 337 62 438 44C576 20 730 15 823 115C919 219 886 382 796 470C698 566 582 518 471 546C327 584 178 594 87 479C12 384 20 151 118 75Z;M97 94C198 6 323 40 417 34C567 22 746 -3 842 101C938 204 896 366 826 466C748 578 605 520 489 544C338 576 193 608 95 501C10 409 21 181 97 94Z" /></path>
+              <path class="surface-thread surface-thread--a" d="M92 364C176 295 253 332 340 288C428 245 501 136 620 162C716 184 771 245 858 206" />
+              <path class="surface-thread surface-thread--b" d="M140 120C262 162 294 212 398 195C521 175 589 56 746 100" />
+              <circle class="floating-dot" cx="145" cy="494" r="22" />
+              <circle class="floating-dot floating-dot--small" cx="780" cy="488" r="14" />
+              <circle class="floating-dot floating-dot--tiny" cx="682" cy="80" r="8" />
+            </svg>
+
+            <div class="liquid-stage__labels" aria-hidden="true">
+              <span>01 Echoes</span>
+              <span>02 Parallax Dream</span>
+              <span>03 Chroma Mass</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section-block lower-liquid-world" aria-labelledby="lower-title">
+        <div class="section-heading section-heading--fluid" data-reveal>
+          <div>
+            <p class="eyebrow">Same motion language</p>
+            <h2 id="lower-title">下層もTOPと同じ、SVGの膜で動かす。</h2>
+          </div>
+          <p>
+            CSSの角丸カードではなく、TOPと同じようにSVGのpath、clipPath、発光ライン、表面の糸を使って、ホバー中ずっと輪郭が流れる構造に変えています。
+          </p>
+        </div>
+
+        <div class="lower-liquid-sea" data-reveal>
+          <article class="top-motion-card top-motion-card--manifest" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-manifest" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-manifest" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-manifest" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-manifest" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="15" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-manifest" clipPathUnits="userSpaceOnUse">
+                    <path d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z">
+                      <animate attributeName="d" dur="14s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" />
+                <path class="lower-membrane-fill" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" fill="url(#lower-fill-manifest)" filter="url(#lower-glow-manifest)">
+                  <animate attributeName="d" dur="17s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-manifest)">
+                  <path class="lower-gradient-pool" d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z">
+                    <animate attributeName="d" dur="12s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  </path>
+                  <circle class="lower-floating-drop" cx="168" cy="178" r="30" />
+                  <circle class="lower-floating-drop lower-floating-drop--small" cx="312" cy="304" r="16" />
+                </g>
+                <path class="lower-image-rim" d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" filter="url(#lower-glow-manifest)">
+                  <animate attributeName="d" dur="14s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" stroke="url(#lower-stroke-manifest)" filter="url(#lower-glow-manifest)">
+                  <animate attributeName="d" dur="17s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--center">
+              <p class="eyebrow">Concept</p>
+              <h3>ひとつの水面に、情報を浮かせる。</h3>
+              <p>下のコンテンツは独立したカードではなく、TOPから続く液体レイヤーの中に浮くノードとして扱います。ホバーすると、そのノードの膜だけがTOPのヒーローと同じテンポでうねります。</p>
+              <div class="mini-specs"><span>SVG path</span><span>clipPath</span><span>hover SMIL</span></div>
+            </div>
+          </article>
+
+          <article class="top-motion-card top-motion-card--phone" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-phonecat" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-phonecat" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-phonecat" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-phonecat" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="15" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-phonecat" clipPathUnits="userSpaceOnUse">
+                    <path d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z">
+                      <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" />
+                <path class="lower-membrane-fill" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" fill="url(#lower-fill-phonecat)" filter="url(#lower-glow-phonecat)">
+                  <animate attributeName="d" dur="17s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-phonecat)">
+                  <image class="lower-liquid-img" href="assets/cat-chair.webp" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-phonecat)" />
+                </g>
+                <path class="lower-image-rim" d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" filter="url(#lower-glow-phonecat)">
+                  <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" stroke="url(#lower-stroke-phonecat)" filter="url(#lower-glow-phonecat)">
+                  <animate attributeName="d" dur="17s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--bottom">
+              <p class="eyebrow">Mobile surface</p>
+              <h3>Noise<br />is Beauty.</h3>
+            </div>
+          </article>
+
+          <article class="top-motion-card top-motion-card--feature" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-featured" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-featured" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-featured" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-featured" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="15" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-featured" clipPathUnits="userSpaceOnUse">
+                    <path d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z">
+                      <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" />
+                <path class="lower-membrane-fill" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" fill="url(#lower-fill-featured)" filter="url(#lower-glow-featured)">
+                  <animate attributeName="d" dur="17s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-featured)">
+                  <image class="lower-liquid-img" href="assets/mermaid.webp" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-featured)" />
+                </g>
+                <path class="lower-image-rim" d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" filter="url(#lower-glow-featured)">
+                  <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" stroke="url(#lower-stroke-featured)" filter="url(#lower-glow-featured)">
+                  <animate attributeName="d" dur="17s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--bottom">
+              <p class="eyebrow">Featured current</p>
+              <h3>Echoes</h3>
+              <p>作品画像もSVGの不定形マスクで包み、外枠と画像のクリップが同時に変形します。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="works" class="section-block lower-liquid-world lower-liquid-world--works" aria-labelledby="works-title">
+        <div class="section-heading section-heading--fluid" data-reveal>
+          <div>
+            <p class="eyebrow">Selected works</p>
+            <h2 id="works-title">作品一覧も、TOPの膜の延長にする。</h2>
+          </div>
+          <a class="button button--ghost" href="#contact">Contact</a>
+        </div>
+
+        <div class="lower-liquid-gallery" data-reveal>
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-a" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-workechoes" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-workechoes" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-workechoes" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-workechoes" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="17" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-workechoes" clipPathUnits="userSpaceOnUse">
+                    <path d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z">
+                      <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" />
+                <path class="lower-membrane-fill" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" fill="url(#lower-fill-workechoes)" filter="url(#lower-glow-workechoes)">
+                  <animate attributeName="d" dur="17s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-workechoes)">
+                  <image class="lower-liquid-img" href="assets/mermaid.webp" x="-18" y="-6" width="460" height="552" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workechoes)" />
+                </g>
+                <path class="lower-image-rim" d="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" filter="url(#lower-glow-workechoes)">
+                  <animate attributeName="d" dur="14s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z;M103 103C184 36 321 51 360 130C414 237 340 441 223 448C102 456 62 355 70 265C77 177 43 152 103 103Z;M142 61C239 23 326 79 359 161C399 261 352 423 239 468C124 514 49 386 77 269C99 174 65 101 142 61Z;M119 82C191 28 303 48 350 126C414 232 365 418 249 455C137 491 58 396 67 284C76 183 55 129 119 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" stroke="url(#lower-stroke-workechoes)" filter="url(#lower-glow-workechoes)">
+                  <animate attributeName="d" dur="17s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z;M63 98C162 12 316 22 421 54C559 97 703 15 749 132C801 266 699 452 576 494C438 541 315 513 190 469C77 429 28 387 39 274C50 169 0 151 63 98Z;M120 46C216 -5 323 66 432 36C573 -3 702 63 730 179C760 307 663 481 526 506C388 531 300 434 169 507C58 569 9 392 49 268C81 167 47 91 120 46Z;M84 76C166 3 305 30 410 26C559 20 695 33 735 146C781 278 691 470 552 503C411 537 314 458 181 500C72 535 17 423 34 291C48 181 24 130 84 76Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--bottom">
+              <span class="work-index">01</span>
+              <p class="eyebrow">Main visual</p>
+              <h3>Echoes</h3>
+              <p>暗い水面に沈むような余白を残し、ホバーで膜の縁を強く反応させます。</p>
+            </div>
+          </article>
+
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-b" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-workcat" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-workcat" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-workcat" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-workcat" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="14" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-workcat" clipPathUnits="userSpaceOnUse">
+                    <path d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z">
+                      <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" />
+                <path class="lower-membrane-fill" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" fill="url(#lower-fill-workcat)" filter="url(#lower-glow-workcat)">
+                  <animate attributeName="d" dur="17s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-workcat)">
+                  <image class="lower-liquid-img" href="assets/cat-chair.webp" x="-8" y="-14" width="456" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workcat)" />
+                </g>
+                <path class="lower-image-rim" d="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" filter="url(#lower-glow-workcat)">
+                  <animate attributeName="d" dur="14s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z;M96 94C184 25 342 25 407 92C494 184 479 378 372 482C283 568 117 535 61 440C10 356 9 164 96 94Z;M130 58C230 26 344 48 411 129C482 218 440 394 350 480C254 570 105 510 67 419C24 318 39 98 130 58Z;M112 78C202 27 326 35 391 105C474 194 449 384 360 470C270 556 121 526 70 438C24 359 25 129 112 78Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" stroke="url(#lower-stroke-workcat)" filter="url(#lower-glow-workcat)">
+                  <animate attributeName="d" dur="17s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z;M51 144C130 43 293 31 400 67C537 113 692 19 752 143C815 273 724 436 603 488C466 548 329 520 201 469C86 423 32 388 43 284C51 198 -5 212 51 144Z;M103 70C197 16 301 60 420 38C562 12 706 77 733 196C762 326 661 478 528 511C405 541 319 435 182 506C75 562 21 383 55 268C84 168 35 111 103 70Z;M62 119C134 27 282 13 404 49C540 90 713 31 748 172C781 303 706 451 580 500C441 553 333 472 196 494C85 512 27 412 40 298C50 208 10 185 62 119Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--bottom">
+              <span class="work-index">02</span>
+              <h3>Parallax Dream</h3>
+              <p>淡い色の面を、液体の窓の中で少しだけ漂わせます。</p>
+            </div>
+          </article>
+
+          <article class="top-motion-card top-motion-card--work top-motion-card--work-c" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-workchroma" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-workchroma" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-workchroma" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-workchroma" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="17" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-workchroma" clipPathUnits="userSpaceOnUse">
+                    <path d="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z">
+                      <animate attributeName="d" dur="14s" values="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z;M165 52C254 20 361 82 379 188C402 309 327 460 228 455C127 448 82 366 117 256C146 163 100 91 165 52Z;M133 94C240 27 357 49 393 166C432 290 338 443 251 498C145 563 88 389 111 273C128 180 68 134 133 94Z;M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z;M133 94C240 27 357 49 393 166C432 290 338 443 251 498C145 563 88 389 111 273C128 180 68 134 133 94Z;M165 52C254 20 361 82 379 188C402 309 327 460 228 455C127 448 82 366 117 256C146 163 100 91 165 52Z;M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" />
+                <path class="lower-membrane-fill" d="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" fill="url(#lower-fill-workchroma)" filter="url(#lower-glow-workchroma)">
+                  <animate attributeName="d" dur="17s" values="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z;M128 56C224 6 333 70 445 42C574 11 706 91 720 207C736 337 638 477 508 499C382 520 308 457 191 510C78 562 15 394 55 268C86 169 56 94 128 56Z;M72 112C176 20 327 30 426 64C562 111 704 43 735 158C772 294 679 444 567 494C445 548 324 516 203 473C91 433 33 376 45 281C58 181 5 170 72 112Z;M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z;M72 112C176 20 327 30 426 64C562 111 704 43 735 158C772 294 679 444 567 494C445 548 324 516 203 473C91 433 33 376 45 281C58 181 5 170 72 112Z;M128 56C224 6 333 70 445 42C574 11 706 91 720 207C736 337 638 477 508 499C382 520 308 457 191 510C78 562 15 394 55 268C86 169 56 94 128 56Z;M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-workchroma)">
+                  <image class="lower-liquid-img" href="assets/chroma.webp" x="-30" y="-10" width="492" height="570" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-workchroma)" />
+                </g>
+                <path class="lower-image-rim" d="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" filter="url(#lower-glow-workchroma)">
+                  <animate attributeName="d" dur="14s" values="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z;M165 52C254 20 361 82 379 188C402 309 327 460 228 455C127 448 82 366 117 256C146 163 100 91 165 52Z;M133 94C240 27 357 49 393 166C432 290 338 443 251 498C145 563 88 389 111 273C128 180 68 134 133 94Z;M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z;M133 94C240 27 357 49 393 166C432 290 338 443 251 498C145 563 88 389 111 273C128 180 68 134 133 94Z;M165 52C254 20 361 82 379 188C402 309 327 460 228 455C127 448 82 366 117 256C146 163 100 91 165 52Z;M147 74C235 28 354 60 383 169C416 292 344 446 239 468C139 489 94 388 113 273C126 187 86 115 147 74Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" stroke="url(#lower-stroke-workchroma)" filter="url(#lower-glow-workchroma)">
+                  <animate attributeName="d" dur="17s" values="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z;M128 56C224 6 333 70 445 42C574 11 706 91 720 207C736 337 638 477 508 499C382 520 308 457 191 510C78 562 15 394 55 268C86 169 56 94 128 56Z;M72 112C176 20 327 30 426 64C562 111 704 43 735 158C772 294 679 444 567 494C445 548 324 516 203 473C91 433 33 376 45 281C58 181 5 170 72 112Z;M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z;M72 112C176 20 327 30 426 64C562 111 704 43 735 158C772 294 679 444 567 494C445 548 324 516 203 473C91 433 33 376 45 281C58 181 5 170 72 112Z;M128 56C224 6 333 70 445 42C574 11 706 91 720 207C736 337 638 477 508 499C382 520 308 457 191 510C78 562 15 394 55 268C86 169 56 94 128 56Z;M94 88C186 15 322 37 430 35C568 32 694 67 725 180C762 314 680 452 552 489C419 527 333 492 205 501C82 509 25 414 39 296C53 180 31 139 94 88Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--bottom">
+              <span class="work-index">03</span>
+              <h3>Chroma Mass</h3>
+              <p>強い色は水膜の中の発光体として扱い、境界を柔らかく揺らします。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="motion" class="section-block lower-liquid-world lower-liquid-world--motion" aria-labelledby="motion-title">
+        <div class="section-heading section-heading--fluid" data-reveal>
+          <div>
+            <p class="eyebrow">Motion notes</p>
+            <h2 id="motion-title">ホバー中だけ、TOPのように動き続ける。</h2>
+          </div>
+        </div>
+
+        <div class="lower-liquid-lab" data-reveal>
+          <article class="top-motion-card top-motion-card--lab" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-labflow" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-labflow" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-labflow" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-labflow" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="14" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-labflow" clipPathUnits="userSpaceOnUse">
+                    <path d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z">
+                      <animate attributeName="d" dur="14s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" />
+                <path class="lower-membrane-fill" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" fill="url(#lower-fill-labflow)" filter="url(#lower-glow-labflow)">
+                  <animate attributeName="d" dur="17s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-labflow)">
+                  <path class="lower-gradient-pool" d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z">
+                    <animate attributeName="d" dur="12s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  </path>
+                  <circle class="lower-floating-drop" cx="168" cy="178" r="30" />
+                  <circle class="lower-floating-drop lower-floating-drop--small" cx="312" cy="304" r="16" />
+                </g>
+                <path class="lower-image-rim" d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" filter="url(#lower-glow-labflow)">
+                  <animate attributeName="d" dur="14s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" stroke="url(#lower-stroke-labflow)" filter="url(#lower-glow-labflow)">
+                  <animate attributeName="d" dur="17s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--center">
+              <p class="eyebrow">Hover flow</p>
+              <h3>Enter / Hold / Leave</h3>
+              <ol class="flow-list flow-list--top-motion">
+                <li><span>01</span><strong>Enter</strong><em>膜のpathが加速</em></li>
+                <li><span>02</span><strong>Hold</strong><em>輪郭がループ</em></li>
+                <li><span>03</span><strong>Leave</strong><em>静かな呼吸へ戻る</em></li>
+              </ol>
+            </div>
+          </article>
+
+          <article class="top-motion-card top-motion-card--palette" data-lower-liquid-card>
+            <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-palette" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-palette" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-palette" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-palette" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="14" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-palette" clipPathUnits="userSpaceOnUse">
+                    <path d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z">
+                      <animate attributeName="d" dur="14s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" />
+                <path class="lower-membrane-fill" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" fill="url(#lower-fill-palette)" filter="url(#lower-glow-palette)">
+                  <animate attributeName="d" dur="17s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-palette)">
+                  <path class="lower-gradient-pool" d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z">
+                    <animate attributeName="d" dur="12s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  </path>
+                  <circle class="lower-floating-drop" cx="168" cy="178" r="30" />
+                  <circle class="lower-floating-drop lower-floating-drop--small" cx="312" cy="304" r="16" />
+                </g>
+                <path class="lower-image-rim" d="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" filter="url(#lower-glow-palette)">
+                  <animate attributeName="d" dur="14s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z;M78 128C166 36 300 40 391 68C516 107 652 33 695 153C742 285 639 440 521 452C399 465 316 505 202 454C92 405 55 376 65 278C75 189 24 181 78 128Z;M112 83C194 20 304 68 400 50C533 25 644 79 680 174C724 292 639 423 526 462C413 501 314 414 202 472C103 523 42 390 72 286C96 196 47 132 112 83Z;M92 102C170 35 286 44 381 46C520 48 637 55 686 154C737 259 665 409 552 454C434 501 319 433 210 466C108 496 51 410 59 305C66 214 34 151 92 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" stroke="url(#lower-stroke-palette)" filter="url(#lower-glow-palette)">
+                  <animate attributeName="d" dur="17s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z;M58 108C154 20 288 21 392 48C530 83 681 19 722 138C771 279 670 458 540 468C401 480 315 529 188 481C65 434 23 388 38 274C51 173 0 160 58 108Z;M112 55C203 2 310 62 414 39C548 10 675 64 708 169C751 308 655 441 529 489C412 534 312 434 184 501C75 558 8 399 45 275C77 169 36 102 112 55Z;M78 82C154 16 274 33 373 34C516 36 652 39 704 141C764 260 688 431 566 482C441 534 319 458 198 494C88 526 22 426 33 302C43 194 18 135 78 82Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+            <div class="top-motion-card__content top-motion-card__content--center">
+              <p class="eyebrow">Color breath</p>
+              <div class="palette-row palette-row--droplets" aria-label="Color palette">
+                <span style="--swatch:#0d0812"></span>
+                <span style="--swatch:#202033"></span>
+                <span style="--swatch:#5e3a6e"></span>
+                <span style="--swatch:#ff7daa"></span>
+                <span style="--swatch:#60e7e0"></span>
+                <span style="--swatch:#a786ff"></span>
+              </div>
+              <p>色は面で塗らず、膜の反射、泡の縁、ホバー光として散らします。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section-block lower-liquid-world lower-liquid-world--contact" aria-labelledby="contact-title">
+        <article class="top-motion-card top-motion-card--contact" data-lower-liquid-card data-reveal>
+          <svg class="lower-liquid-svg " viewBox="0 0 800 560" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="lower-fill-contactflow" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity="0.13" />
+                    <stop offset="0.35" stop-color="#ff7daa" stop-opacity="0.08" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.12" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.18" />
+                  </linearGradient>
+                  <linearGradient id="lower-stroke-contactflow" x1="0" x2="1" y1="0" y2="1">
+                    <stop offset="0" stop-color="#f4efff" stop-opacity="0.82" />
+                    <stop offset="0.42" stop-color="#ff7daa" stop-opacity="0.78" />
+                    <stop offset="0.72" stop-color="#60e7e0" stop-opacity="0.72" />
+                    <stop offset="1" stop-color="#a786ff" stop-opacity="0.66" />
+                  </linearGradient>
+                  <filter id="lower-glow-contactflow" x="-28%" y="-28%" width="156%" height="156%">
+                    <feGaussianBlur stdDeviation="10" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0.25  0 1 0 0 0.2  0 0 1 0 0.55  0 0 0 0.9 0" result="glow" />
+                    <feMerge><feMergeNode in="glow" /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                  <filter id="lower-warp-contactflow" x="-12%" y="-12%" width="124%" height="124%">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.016" numOctaves="2" seed="18" result="warpNoise">
+                      <animate attributeName="baseFrequency" dur="13s" values="0.008 0.016;0.014 0.009;0.008 0.016" repeatCount="indefinite" />
+                    </feTurbulence>
+                    <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+                  </filter>
+                  <clipPath id="clip-contactflow" clipPathUnits="userSpaceOnUse">
+                    <path d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z">
+                      <animate attributeName="d" dur="14s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                    </path>
+                  </clipPath>
+                </defs>
+                <path class="lower-membrane-shadow" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" />
+                <path class="lower-membrane-fill" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" fill="url(#lower-fill-contactflow)" filter="url(#lower-glow-contactflow)">
+                  <animate attributeName="d" dur="17s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <g class="lower-liquid-art" filter="url(#lower-warp-contactflow)">
+                  <path class="lower-gradient-pool" d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z">
+                    <animate attributeName="d" dur="12s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.55s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  </path>
+                  <circle class="lower-floating-drop" cx="168" cy="178" r="30" />
+                  <circle class="lower-floating-drop lower-floating-drop--small" cx="312" cy="304" r="16" />
+                </g>
+                <path class="lower-image-rim" d="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" filter="url(#lower-glow-contactflow)">
+                  <animate attributeName="d" dur="14s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.45s" values="M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z;M85 126C178 42 326 56 416 80C539 112 662 51 711 172C756 284 650 430 534 447C408 466 310 486 203 447C102 410 63 369 72 279C81 196 28 181 85 126Z;M130 78C214 28 333 73 434 55C562 32 660 96 692 194C731 313 620 429 498 456C382 482 303 397 190 469C91 532 56 371 83 274C107 188 62 119 130 78Z;M101 102C185 31 310 56 416 51C548 45 653 75 699 173C750 280 655 412 535 450C408 490 315 417 201 464C103 504 59 390 70 290C80 197 39 153 101 102Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-membrane-line" d="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" stroke="url(#lower-stroke-contactflow)" filter="url(#lower-glow-contactflow)">
+                  <animate attributeName="d" dur="17s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.36;0.72;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                  <animate data-lower-hover-animate attributeName="d" begin="indefinite" dur="1.72s" values="M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z;M60 119C163 20 310 24 421 61C567 109 693 23 752 153C805 284 706 441 581 493C448 549 320 515 195 470C80 428 33 379 43 280C53 178 -3 177 60 119Z;M117 52C220 0 321 70 442 39C586 3 702 81 730 202C761 338 640 477 499 498C369 518 299 426 176 507C68 578 16 376 58 259C89 164 48 89 117 52Z;M82 80C177 5 310 47 421 33C574 13 708 54 742 176C781 316 673 458 540 494C408 531 315 447 191 498C80 544 21 408 39 285C54 181 23 128 82 80Z" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.34;0.68;1" keySplines="0.16 1 0.3 1;0.22 1 0.36 1;0.16 1 0.3 1" />
+                </path>
+                <path class="lower-surface-thread lower-surface-thread--a" d="M94 356C186 298 270 332 362 286C466 234 536 156 668 196" />
+                <path class="lower-surface-thread lower-surface-thread--b" d="M132 132C248 164 305 202 410 180C532 154 596 82 720 118" />
+                <circle class="lower-dot" cx="150" cy="470" r="17" />
+                <circle class="lower-dot lower-dot--small" cx="640" cy="450" r="10" />
+              </svg>
+          <div class="top-motion-card__content top-motion-card__content--contact">
+            <div>
+              <p class="eyebrow">Join our world</p>
+              <h2 id="contact-title">この水面に、新しい作品を流し込む。</h2>
+              <p>新作、モーション検証、実装メモをまとめて届ける想定のフォームです。</p>
+            </div>
+            <form class="subscribe-form">
+              <label class="sr-only" for="email">メールアドレス</label>
+              <input id="email" type="email" placeholder="your email" autocomplete="email" />
+              <button type="submit" aria-label="Submit email">→</button>
+            </form>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-year></span> Noisiform. Liquid UI prototype v10.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
