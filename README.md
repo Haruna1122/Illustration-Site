@@ -1,70 +1,56 @@
-# Organic Noise Site v11
+# Artist Portfolio Prototype
 
-v10 の流体UIをベースに、WebGL の屈折レイヤーを追加した版です。SVG の膜やホバー時の枠の動きはそのまま残し、画像の上に薄い `canvas` を重ねて、水越しに見えるような揺らぎを足しています。
+This prototype has been reorganized from a single long TOP page into a hierarchical static portfolio site.
 
-## 確認方法
+## Main structure
 
-```bash
-cd organic-noise-site-v11
-python3 -m http.server 8000
-```
+- `index.html` - Home / entry page
+- `work/index.html` - Work category landing
+- `work/<category>/index.html` - Category listing
+- `work/<category>/<sample>/index.html` - Work detail page
+- `commission/index.html` - Commission landing
+- `commission/portrait/index.html` - Portrait commission detail
+- `commission/flyer-design/index.html` - Flyer design commission detail
+- `commission/skeb/index.html` - Skeb guide
+- `shop/index.html` - ZINE / BOOTH landing
+- `shop/zine-soft-noise/index.html` - ZINE detail template
+- `about/index.html` - Profile page
 
-ブラウザで `http://localhost:8000` を開いてください。WebGL と画像読み込みの都合で、`file://` 直開きではなくローカルサーバー経由の確認がおすすめです。
+## Placeholder replacement notes
 
-## 画像の差し替え
+- Replace images marked with `data-placeholder-image` after final artwork references are ready.
+- TOP CTA panel images are mapped in `scripts/assets-config.js` as `ctaWork`, `ctaCommission`, and `ctaBooth`. You can replace the asset paths there without touching the HTML.
+- Replace links marked with `data-link-placeholder` after Skeb, BOOTH, X, Instagram, and Email URLs are finalized.
+- The visual system is still based on the original liquid membrane, drifting particles, smoke, grain, and blurred light layers.
 
-画像パスは `scripts/assets-config.js` に集約しています。
+## Navigation note
 
-```js
-window.SITE_ASSETS = {
-  mermaid: "assets/mermaid.webp",
-  catChair: "assets/cat-chair.webp",
-  chroma: "assets/chroma.webp",
-};
-```
+Links use explicit `index.html` paths so the prototype works when opened locally from the filesystem and when served from a static host.
 
-GitHub Pages に置く場合は、同じリポジトリ内の画像パスに置き換えるのが一番安全です。
+## 2026-06 organic TOP CTA update
 
-```js
-window.SITE_ASSETS = {
-  mermaid: "assets/my-new-main.webp",
-  catChair: "assets/my-new-sub.webp",
-  chroma: "assets/my-new-color.webp",
-};
-```
+The homepage hero CTAs (`View Work`, `Commission`, `BOOTH`) were enlarged and restyled as organic image panels that visually echo the main liquid hero. Placeholder images remain connected through `scripts/assets-config.js` keys:
 
-外部URLも指定できます。
+- `ctaWork`
+- `ctaCommission`
+- `ctaBooth`
 
-```js
-window.SITE_ASSETS = {
-  mermaid: "https://example.com/images/main.webp",
-  catChair: "https://example.com/images/sub.webp",
-  chroma: "https://example.com/images/color.webp",
-};
-```
+Replace those values or the files in `assets/` when final artwork is ready.
 
-通常の画像表示は外部URLでも動きます。ただし WebGL の屈折レイヤーは画像をテクスチャとして読み込むため、外部サーバー側で CORS が許可されている必要があります。CORS がない画像では、画像本体は表示されますが、屈折レイヤーだけ自動的に無効になります。
+## v17 CTA update
 
-## 主な編集箇所
+- TOPの `View Work / Commission / BOOTH` を、CSS角丸カードではなくSVG path / clipPath / 発光ラインの液体膜CTAに作り直しました。
+- `data-lower-liquid-card` と `data-lower-hover-animate` を使い、v10と同じSMIL hover motionで膜が変形します。
+- 画像差し替えは `scripts/assets-config.js` の `ctaWork` / `ctaCommission` / `ctaBooth` を維持しています。
 
-```text
-scripts/assets-config.js  画像パスの差し替え
-scripts/asset-loader.js   data-asset-key から画像を反映
-scripts/refraction.js     WebGL屈折シェーダー
-styles/refraction.css     屈折レイヤーの濃さ、重ね方
-index.html                data-refraction-key / data-asset-key
-```
+## v18 subpage headline balance
 
-## 屈折の強さを変える
+- サブページ上部の導入文言（例: 「ZINEとBOOTHへの入口。」）のフォントサイズを半分以下に抑えました。
+- TOP heroや液体SVG CTAの構造は変更していません。
 
-HTML側の `data-refraction-intensity` を変えると、要素ごとに揺らぎの強さを調整できます。
+## v18 update
 
-```html
-<article data-refraction-key="mermaid" data-refraction-intensity="0.92">
-```
-
-小さくすると静かに、大きくすると水面感が強くなります。
-
-## スタンドアローン版
-
-`standalone-preview.html` は CSS / JS / 画像を直接埋め込んだ確認用です。Codex や GitHub に持っていく場合は、通常構成の `index.html` 側を編集してください。
+- TOPのFluid hero内にある3つの画像パネルをナビゲーションボタン化しました。
+- DesktopではCommissionとBOOTHを上段に置き、Worksを少し小さめに下段へ回しています。
+- Mobileでは縦積みではなく、Commission、BOOTH、Worksが少し互い違いになるようにSVG内の配置変数を調整しています。
+- パネル画像は従来どおり `scripts/assets-config.js` で差し替えられます。
